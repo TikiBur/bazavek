@@ -1,0 +1,131 @@
+{% extends 'main/layout.html' %} 
+{% load static %} 
+{% block title %}База Век{% endblock %}
+{% block content %}
+<div class="fullscreen-booking">
+  <div
+    class="booking-background"
+    style="background-image: url('{% static house.image %}')"
+  ></div>
+  <div class="booking-overlay"></div>
+
+  <div class="booking-container">
+    <div class="booking-details">
+      <div class="details-content">
+        <div class="property-header">
+          <h2 class="property-title">{{ house.title }}</h2>
+          <div class="property-badge">{{ house.capacity }}</div>
+        </div>
+
+        <div class="price-section">
+          <span class="price-value">{{ house.price }}</span>
+          <span class="price-currency">руб/сутки</span>
+        </div>
+
+        <div class="description-section">
+          <p>{{ house.description }}</p>
+        </div>
+
+        <div class="features-section">
+          <h3 class="features-title">Особенности</h3>
+          <ul class="features-list">
+            {% for feature in house.features %}
+            <li class="feature-item">
+              <i class="fas fa-check-circle feature-icon"></i>
+              <span>{{ feature }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-form-section">
+      <div class="form-container">
+        <h2 class="form-title">Забронировать</h2>
+
+        <form method="post" id="booking-form">
+          {% csrf_token %}
+          <input type="hidden" name="house_id" value="{{ house.id }}" />
+
+          {% for field in form %}
+          <div class="form-group{% if field.errors %} invalid{% endif %}">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }} {% for error in field.errors %}
+            <div class="error-message">
+              <i class="fas fa-exclamation-circle"></i> {{ error }}
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %} {% for error in errors %}
+          <div class="alert">
+            <i class="fas fa-exclamation-triangle"></i> {{ error }}
+          </div>
+          {% endfor %}
+
+          <div class="price-summary">
+            <div class="summary-row">
+              <span
+                >{{ house.price }} руб ×
+                <span id="nights-count">0</span> ночей</span
+              >
+              <span id="subtotal">0 руб</span>
+            </div>
+            <div class="summary-row total">
+              <span>Итого</span>
+              <span id="total-price">0 руб</span>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn" disabled>
+            Подтвердить бронирование <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dateRangeInput = document.getElementById('id_date_range');
+    const pricePerNight = {{ house.price }};
+    const nightsElem = document.getElementById('nights-count');
+    const subtotalElem = document.getElementById('subtotal');
+    const totalElem = document.getElementById('total-price');
+    const submitBtn = document.getElementById('submit-btn');
+
+    const disabledDates = {{ booked_dates|safe }};
+
+    flatpickr.localize(flatpickr.l10ns.ru);
+    const calendar = flatpickr(dateRangeInput, {
+      mode: "range",
+      dateFormat: "d.m.Y",
+      minDate: "today",
+      disable: disabledDates.map(date => date),
+      onClose: function(selectedDates) {
+        if (selectedDates.length === 2) {
+          const nights = Math.ceil((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
+          nightsElem.textContent = nights;
+          const total = nights * pricePerNight;
+          subtotalElem.textContent = total.toLocaleString('ru-RU') + ' руб';
+          totalElem.textContent = total.toLocaleString('ru-RU') + ' руб';
+          submitBtn.disabled = false;
+
+          const formatter = new Intl.DateTimeFormat('ru-RU', {
+            day: '2-digit', month: '2-digit', year: 'numeric'
+          });
+          dateRangeInput.value = `${formatter.format(selectedDates[0])} - ${formatter.format(selectedDates[1])}`;
+        } else {
+          nightsElem.textContent = '0';
+          subtotalElem.textContent = '0 руб';
+          totalElem.textContent = '0 руб';
+          submitBtn.disabled = true;
+          dateRangeInput.value = '';
+        }
+      }
+    });
+  });
+</script>
+{% include 'main/footer.html' %}
+{% endblock %}

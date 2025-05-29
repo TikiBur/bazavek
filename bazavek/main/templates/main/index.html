@@ -1,0 +1,59 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}База Век{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-bg-overlay">
+        <div class="hero-bg-rectangle"></div>
+        <div class="hero-bg-triangle"></div>
+    </div>
+
+    <div class="hero-decorations">
+        <div class="decor-circle decor-circle-1"></div>
+        <div class="decor-circle decor-circle-2"></div>
+        <div class="decor-dots"></div>
+    </div>
+    
+    <div class="hero-content container">
+        <div class="hero-info">
+            <h1 class="hero-title" data-aos="fade-right">База отдыха «Век»</h1>
+            <h2 class="hero-subtitle" data-aos="fade-right" data-aos-delay="100">Идеальный отдых в Приморском крае</h2>
+            <p class="hero-text" data-aos="fade-right" data-aos-delay="200">Погрузитесь в атмосферу уюта и природы на нашей базе отдыха. Наслаждайтесь комфортом и спокойствием вдали от городской суеты.</p>
+            <div class="hero-line" data-aos="fade-right" data-aos-delay="300"></div>
+            <button class="hero-btn" data-aos="fade-up" data-aos-delay="400">
+                <a href="{% url 'main:rentals' %}" class="hero-btn-link">Забронировать сейчас</a>
+                <span class="btn-arrow">→</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="phone-floating">
+        <a href="tel:+71234567890" class="phone-button">
+            <div class="phone-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--dark-bg)">
+                    <path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.5-5.2-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.1-.6-2.4-.6-3.6 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/>
+                </svg>
+            </div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring delay"></div>
+            <span class="phone-tooltip">Позвонить нам</span>
+        </a>
+    </div>
+    
+    <div class="scroll-down">
+        <span class="scroll-text">Листайте вниз</span>
+        <div class="scroll-arrow"></div>
+    </div>
+</div>
+
+<script src="{% static 'main/js/script.js' %}"></script>
+{% include 'main/about.html' %}
+{% include 'main/funy.html' %}
+{% include 'main/rental.html' %}
+{% include 'main/gallery.html' %}
+{% include 'main/testimonial.html' %}
+{% include 'main/location.html' %}
+{% include 'main/footer.html' %}
+{% endblock %}

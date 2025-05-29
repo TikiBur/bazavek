@@ -1,0 +1,85 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}База Век{% endblock %}
+{% block content %}
+<div class="booking-success-container" style="background-image: url('{% static "main/img/"|add:booking.house_id|add:".png" %}');">
+    <div class="success-overlay"></div>
+    
+    <div class="success-content">
+        <div class="success-card">
+            <div class="house-preview">
+                <img src="{% static 'main/img/'|add:booking.house_id|add:'.png' %}" alt="{{ booking.house_title }}" class="house-image">
+                <div class="image-text-overlay">
+                    <h1>Бронирование подтверждено!</h1>
+                    <p class="success-subtitle">Ваш отдых в <strong>{{ booking.house_title }}</strong> запланирован</p>
+                </div>
+                <div class="house-rating">
+                    <i class="fas fa-star"></i>
+                    <span>4.9</span>
+                </div>
+            </div>
+            
+            <div class="booking-details__success">
+                <div class="detail-row">
+                    <span class="detail-label">
+                        <i class="far fa-calendar-alt"></i> Даты:
+                    </span>
+                    <span class="detail-value">{{ booking.start_date|date:"d.m.Y" }} - {{ booking.end_date|date:"d.m.Y" }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">
+                        <i class="far fa-moon"></i> Ночей:
+                    </span>
+                    <span class="detail-value">{{ booking.nights }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">
+                        <i class="fas fa-user-friends"></i> Гости:
+                    </span>
+                    <span class="detail-value">{{ booking.guests }} человек</span>
+                </div>
+                
+                <div class="detail-row total">
+                    <span class="detail-label">
+                        <i class="fas fa-receipt"></i> Итого:
+                    </span>
+                    <span class="detail-value">{{ booking.total_price }} руб.</span>
+                </div>
+
+                <div class="detail-warning">
+                    <span class="warning">
+                        <i class="fas fa-exclamation-circle"></i> Оплата производится на месте!
+                    </span>
+                </div>
+            </div>
+            
+            <div class="confirmation-message">
+                <div class="message-box">
+                    <div class="email">
+                        <p>Подтверждение отправлено на:</p>
+                        <strong>{{ booking.email }}</strong>
+                    </div>
+                </div>
+                <div class="message-box">
+                    <div class="number">
+                        <p>Номер бронирования:</p>
+                        <strong>#{{ booking.id }}</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="{% url 'main:index' %}" class="back-home-btn">
+                    <i class="fas fa-home"></i> На главную
+                </a>
+                <a href="#" class="print-btn" onclick="window.print()">
+                    <i class="fas fa-print"></i> Печать
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'main/footer.html' %}
+{% endblock %}

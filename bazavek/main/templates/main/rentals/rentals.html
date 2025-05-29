@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}База Век{% endblock %}
+{% block content %}
+<section class="booking">
+    <div class="booking_flower flower">
+        <img src="{% static 'main/img/flowers.png' %}" alt="Декоративный элемент">
+    </div>
+    <div class="booking_container container">
+        
+        <h2 class="booking_title titles" data-aos="fade-up">Выберите <span class="booking_title-decor">идеальное жилье</span> <br> для вашего отдыха</h2>
+        
+        <div class="tab_content active" id="rental-tab">
+            <div class="booking_cards">
+                {% for house in houses %}
+                    <div class="booking_card" data-aos="{% cycle 'fade-right' 'fade-left' %}" data-aos-delay="{{ forloop.counter|add:'0' }}00">
+                        <div class="card_image">
+                            <img src="{% static house.image %}" alt="{{ house.title }}">
+                            <div class="card_badge">{{ house.capacity }}</div>
+                        </div>
+                        <div class="card_content">
+                            <h3 class="card_title">{{ house.title }}</h3>
+                            <div class="card_price">От {{ house.price }} руб/сутки</div>
+                            <ul class="card_features">
+                                {% for feature in house.features %}
+                                    <li>{{ feature }}</li>
+                                {% endfor %}
+                            </ul>
+                            <a href="{% url 'main:book_house' %}?house_id={{ house.id }}" class="card_button">
+                                Забронировать
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="tab_content" id="locations-tab">
+            <div class="locations_content">
+                <p>Информация о локациях будет здесь</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'main/footer.html' %}
+{% endblock %}

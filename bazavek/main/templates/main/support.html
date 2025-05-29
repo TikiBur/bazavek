@@ -1,0 +1,53 @@
+{% extends 'main/layout.html' %}
+
+{% load static %} 
+{% block title %}База Век{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/support.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+</head>
+<body>
+    <div class="support-container container">
+        <div class="support-header">
+            <h1>Служба поддержки</h1>
+            <p>Свяжитесь с нами удобным для вас способом. Мы всегда рады помочь!</p>
+        </div>
+
+        <div class="contact-methods">
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Телефон</h3>
+                <p class="contact-infos">
+                    <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                </p>
+                <p>Ежедневно с 9:00 до 21:00</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Электронная почта</h3>
+                <p class="contact-infos">
+                    <a href="mailto:support@вашдомен.ru">info@baza-otdyha.ru</a>
+                </p>
+                <p>Ответ в течение 1 часа</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3>Telegram</h3>
+                <p class="contact-infos">
+                    <a href="https://t.me/bazavek" target="_blank">@bazavek</a>
+                </p>
+                <p>Круглосуточная поддержка</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% include 'main/footer.html' %}
+{% endblock %}

@@ -1,0 +1,98 @@
+{% load static %} 
+
+{% block content %}
+<section class="rental">
+  <div class="rental_flower flower">
+    <img src="{% static 'main/img/flowers.png' %}" alt="Декоративный элемент" />
+  </div>
+  <div class="rental_container container">
+    <aside class="rental_nav nav" data-aos="fade-down">Локации</aside>
+    <h2 class="rental_title titles" data-aos="fade-up">
+      У нас есть <span class="rental_title-decor">несколько локаций</span>
+      <br />
+      специально для вас
+    </h2>
+
+    <div class="rental_cards">
+      <div class="rental_card" data-aos="fade-right" data-aos-delay="100">
+        <div class="card_image">
+          <img
+            src="{% static 'main/img/3house.png'%}"
+            alt="Домик на берегу моря"
+          />
+          <div class="card_badge">До 3 чел</div>
+        </div>
+        <div class="card_content">
+          <h3 class="card_title">Домик на берегу моря</h3>
+          <div class="card_price">От 1200 руб/сутки</div>
+          <ul class="card_features">
+            <li>Прямой выход к пляжу</li>
+            <li>Терраса с видом на море</li>
+            <li>Полностью оборудованная кухня</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rental_card" data-aos="fade-left" data-aos-delay="200">
+        <div class="card_image">
+          <img
+            src="{% static 'main/img/4house.png'%}"
+            alt="Домик на берегу моря"
+          />
+          <div class="card_badge">До 4 чел</div>
+        </div>
+        <div class="card_content">
+          <h3 class="card_title">Домик на берегу моря</h3>
+          <div class="card_price">От 1500 руб/сутки</div>
+          <ul class="card_features">
+            <li>Собственный гамак на террасе</li>
+            <li>Камин в гостиной</li>
+            <li>Детская площадка рядом</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rental_card" data-aos="fade-right" data-aos-delay="300">
+        <div class="card_image">
+          <img src="{% static 'main/img/5house.png'%}" alt="Домик возле моря" />
+          <div class="card_badge">До 5 чел</div>
+        </div>
+        <div class="card_content">
+          <h3 class="card_title">Домик возле моря</h3>
+          <div class="card_price">От 2200 руб/сутки</div>
+          <ul class="card_features">
+            <li>Просторная терраса с мангалом</li>
+            <li>2 спальни и гостиная</li>
+            <li>Парковка рядом</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rental_card" data-aos="fade-left" data-aos-delay="400">
+        <div class="card_image">
+          <img src="{% static 'main/img/8house.png'%}" alt="Домик возле моря" />
+          <div class="card_badge">До 8 чел</div>
+        </div>
+        <div class="card_content">
+          <h3 class="card_title">Домик возле моря</h3>
+          <div class="card_price">От 3200 руб/сутки</div>
+          <ul class="card_features">
+            <li>3 спальни и 2 ванные</li>
+            <li>Большая терраса с зоной отдыха</li>
+            <li>До моря 150 метров</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="rental_more" data-aos="fade-up" data-aos-delay="500">
+      <button class="rental_button">
+        <a href="{% url 'main:rentals' %}">
+          Показать больше вариантов
+          <span class="button_arrow">↓</span>
+        </a>
+      </button>
+    </div>
+  </div>
+</section>
+{% endblock %}

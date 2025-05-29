@@ -1,0 +1,48 @@
+{% load static %}
+
+
+{% block content %}
+<section class="about" id="about">
+    <div class="about_flower flower">
+        <img src="{% static 'main/img/flowers.png' %}" alt="">
+    </div>
+    <aside class="about_nav">О нас</aside>
+    <div class="about_container container">
+        <div class="about_desktop-info">
+            <div class="about_left">
+                <h3 class="about_info-info">Загородный клуб</h3>
+                <h2 class="about_info-title titles">Век <span class="about_info-title-baza">База отдыха</span></h2>
+                <p class="about_info-text">
+                    База работает в летне-осенний период. Оптимальный для отдыха период - это август и сентябрь. К началу августа море достаточно прогревается, и отдыхающие с удовольствием принимают не только солнечные, но и морские ванны.<br><br>
+                    База отдыха "ВЕК" - хороший вариант для тех, кто заинтересован в бюджетном отдыхе на природе, где условия минимального комфорта с лихвой компенсируются захватывающими дух красотами окружающей природы.
+                </p>
+                <p class="about_info-special">У нас есть все, что нужно
+                    для полноценного отдыха:</p> 
+            </div>
+            <div class="about_rigth">
+                <div class="about_rigth-img">
+                    <img src="{% static 'main/img/aboutphoto.png'%}" alt="Картинка">
+                </div>
+            </div>
+        </div>
+        <div class="about_info-text-img">
+            <div class="info_text-img">
+                <img src="{% static 'main/img/bedabout.png'%}" class="info_text-icon" alt="Кровать">
+                <p class="info_text-img-info">Комфортабельные, уединеннные домики, оборудованные всем необходимым</p>
+            </div>
+            <div class="info_text-img">
+                <img src="{% static 'main/img/forestabout.png'%}" class="info_text-icon" alt="Лес">
+                <p class="info_text-img-info">Большие локации площадью 50 кв.м. с уютной верандой и зоной отдыха</p>
+            </div>
+            <div class="info_text-img">
+                <img src="{% static 'main/img/towelsabout.png'%}" class="info_text-icon" alt="Баня">
+                <p class="info_text-img-info">Русская баня с панорамным видом, где вы можете расслабиться после долгих прогулок</p>
+            </div>
+            <div class="info_text-img">
+                <img src="{% static 'main/img/bicycleabout.png'%}" class="info_text-icon" alt="Велосипед">
+                <p class="info_text-img-info">Велосипеды и спорт-оборудование позволит Вам активно провести время на свежем воздухе</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

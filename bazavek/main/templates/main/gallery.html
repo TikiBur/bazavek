@@ -1,0 +1,190 @@
+{% load static %}
+
+{% block content %}
+<section class="luxury-gallery" id="gallery">
+    <div class="gallery-header">
+        <h2 class="gallery-title">
+            <aside class="about_nav">Галерея</aside>
+            <span class="stroke-text">Нашей базы</span>
+        </h2>
+        <h2 class="rental_title titles" data-aos="fade-up">Увидите своими глазами <br> <span class="rental_title-decor">наш уют и красоту природы</span></h2>
+    </div>
+
+    <div class="swiper-container gallery-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="slide-image-container">
+                    <img src="{% static 'main/img/gal1.jpg' %}" alt="Домик на берегу моря" class="slide-img">
+                    <div class="image-overlay"></div>
+                    <div class="slide-caption">
+                        <h3>Вид с пляжа</h3>
+                        <div class="caption-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-image-container">
+                    <img src="{% static 'main/img/gal2.jpg' %}" alt="Вид на закат с веранды" class="slide-img">
+                    <div class="image-overlay"></div>
+                    <div class="slide-caption">
+                        <h3>Вид на небо с веранды</h3>
+                        <div class="caption-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-image-container">
+                    <img src="{% static 'main/img/gal3.jpg' %}" alt="Уютный интерьер" class="slide-img">
+                    <div class="image-overlay"></div>
+                    <div class="slide-caption">
+                        <h3>Вид на восход с пляжа</h3>
+                        <div class="caption-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-image-container">
+                    <img src="{% static 'main/img/gal4.jpg' %}" alt="Баня с панорамным видом" class="slide-img">
+                    <div class="image-overlay"></div>
+                    <div class="slide-caption">
+                        <h3>Вид на закат с камней</h3>
+                        <div class="caption-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-image-container">
+                    <img src="{% static 'main/img/gal5.jpg' %}" alt="Зона отдыха у воды" class="slide-img">
+                    <div class="image-overlay"></div>
+                    <div class="slide-caption">
+                        <h3>Зона отдыха у воды</h3>
+                        <div class="caption-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide-image-container">
+                    <img src="{% static 'main/img/gal6.jpg' %}" alt="Вечерние посиделки у костра" class="slide-img">
+                    <div class="image-overlay"></div>
+                    <div class="slide-caption">
+                        <h3>Вечерние посиделки у костра</h3>
+                        <div class="caption-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper = new Swiper('.gallery-slider', {
+            loop: true,
+            effect: 'creative',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            creativeEffect: {
+                prev: {
+                    translate: ['-120%', 0, -500],
+                    rotate: [0, 0, -15],
+                    opacity: 0
+                },
+                next: {
+                    translate: ['120%', 0, -500],
+                    rotate: [0, 0, 15],
+                    opacity: 0
+                },
+                perspective: true,
+                limitProgress: 3,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            breakpoints: {
+                768: {
+                    spaceBetween: 20,
+                    creativeEffect: {
+                        prev: {
+                            translate: ['-80%', 0, -300],
+                        },
+                        next: {
+                            translate: ['80%', 0, -300],
+                        }
+                    }
+                }
+            }
+        });
+    
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom > 0
+            );
+        }
+    
+        function updateSwiperAutoplay() {
+            const gallery = document.querySelector('.luxury-gallery');
+            if (gallery && isElementInViewport(gallery)) {
+                if (!swiper.autoplay.running) {
+                    swiper.autoplay.start();
+                }
+            } else {
+                if (swiper.autoplay.running) {
+                    swiper.autoplay.stop();
+                }
+            }
+        }
+
+        updateSwiperAutoplay();
+
+        let isThrottled = false;
+        window.addEventListener('scroll', function() {
+            if (!isThrottled) {
+                updateSwiperAutoplay();
+                isThrottled = true;
+                setTimeout(() => isThrottled = false, 100);
+            }
+        });
+    
+        swiper.on('slideChange', function() {
+            if (isElementInViewport(document.querySelector('.luxury-gallery'))) {
+                swiper.autoplay.start();
+            }
+    
+            gsap.to('.swiper-slide-active .slide-img', {
+                scale: 1,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+    
+            gsap.to('.swiper-slide:not(.swiper-slide-active) .slide-img', {
+                scale: 1.05,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+    });
+</script>
+
+{% endblock %}

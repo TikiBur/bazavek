@@ -1,0 +1,36 @@
+{% load static %}
+
+{% block content %}
+<section class="funy" id="funy">
+    <div class="funy_container container">
+        <aside class="funy_nav nav">Развлечения</aside>
+        <h2 class="funy_title titles">Мы предлагаем вам<br> несколько <span class="funy_title-decor">видов развлечений:</span></h2>
+        <div class="funy_text">
+            <div class="funy_text-img">
+                <img src="{% static 'main/img/funypik.png'%}" alt="Картинка">
+                <h3 class="funy_text-img-title">Посиделки у костра</h3>
+                <p class="funy_text-img-info">Отличный способ провести время после трудового дня в компании друзей и родных</p>
+            </div>
+            <div class="funy_text-img">
+                <img src="{% static 'main/img/funyfish.png'%}" alt="Картинка">
+                <h3 class="funy_text-img-title">Рыбалка</h3>
+                <p class="funy_text-img-info">Если вы любите рыбалку, Икша Кантри Клаб - прекрасное место для Вас. Водохранилище и форелевый пруд вас приятно удивят</p>
+            </div>
+            <div class="funy_text-img">
+                <img src="{% static 'main/img/funybycicle.png'%}" alt="Картинка">
+                <h3 class="funy_text-img-titles">Виды активного отдыха</h3>
+                <ul class="funy_text-img-info marker">
+                    <li>велосипед, квадроцикл</li>
+                    <li>Сап-доски, лодка, катер, гидроцикл</li>
+                    <li>волейбол, футбол, бадминтон</li>
+                </ul>
+            </div>
+            <div class="funy_text-img">
+                <img src="{% static 'main/img/funybanya.png'%}" class="funy_text-img-four" alt="Картинка">
+                <h3 class="funy_text-img-title">Баня и Спа</h3>
+                <p class="funy_text-img-info">Единение с природой, сочетание русских традиций и современного подхода к уходу за собой</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

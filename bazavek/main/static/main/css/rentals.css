@@ -1,0 +1,83 @@
+.booking {
+    margin-bottom: 6rem;
+}
+
+.booking_title {
+    padding-top: 10rem;
+    margin-bottom: 2rem;
+    color: var(--dark-gold);
+}
+
+.booking_title-decor {
+    color: var(--gold);
+}
+
+.booking_tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-gold);
+}
+.tab_button {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: var(--light-gold);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+}
+.tab_button.active {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.booking_cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab_button.active:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold);
+}
+.tab_content {
+    display: none;
+}
+.tab_content.active {
+    display: block;
+}
+.booking_card {
+    background: var(--dark-section);
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    margin-bottom: 30px;
+}
+.booking_card:hover {
+    transform: translateY(-5px);
+}
+.card_button {
+    background: var(--gold);
+    color: var(--dark-bg);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+.card_button:hover {
+    background: var(--dark-gold);
+}

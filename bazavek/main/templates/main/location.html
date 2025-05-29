@@ -1,0 +1,33 @@
+{% load static %} {% block content %}
+<section class="location-contact" id="location">
+  <aside class="about_nav loc">Локация</aside>
+  <h2 class="rental_title titles" data-aos="fade-up">
+    Вы можете с лёгкостью<br />
+    <span class="rental_title-decor">найти нас на карте</span>
+  </h2>
+  <div class="location-container container">
+    <div class="location-map">
+      <div id="map" class="map-container">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?um=constructor%3A5172c577a927c9e60cfd50f6b87a38fe250ad6951594d5906d0ed10fa825d9de&amp;source=constructor"
+          width="100%"
+          height="100%"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+    <div class="contact-info">
+      <h2 class="contact-title">Контакты</h2>
+      <div class="title-line"></div>
+      <p class="contact-text">Наш адрес:</p>
+      <p class="contact-details">Приморский край, бухта Окуневая</p>
+      <p class="contact-text">Телефон:</p>
+      <p class="contact-details">+7 (999) 123-45-67</p>
+      <p class="contact-text">E-mail:</p>
+      <p class="contact-details">info@baza-otdyha.ru</p>
+      <p class="contact-text">Режим работы:</p>
+      <p class="contact-details">Пн-Вс: 09:00 - 21:00</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
