@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-0q&=636nz56n9t(c2es8(6-)4dtq0q^safj#l&87hx=d88bw_g
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['70f86cef900e.hosting.myjino.ru']
+ALLOWED_HOSTS = [*]
 
 
 
